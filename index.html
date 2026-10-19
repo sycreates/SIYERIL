@@ -111,110 +111,10 @@ section{scroll-margin-top:18px}
 @media(max-height:740px) and (min-width:681px){#countdownGate{align-items:flex-start}.gate-card{margin:auto}.gate-seal{width:52px;height:52px;margin-bottom:10px}.gate-title{font-size:clamp(2.2rem,6vw,4rem);margin:12px 0}.countdown{margin:18px auto 14px}.gate-prayer{margin-top:15px}}
 @media(orientation:landscape) and (max-height:520px){#countdownGate{align-items:flex-start;padding-top:12px;padding-bottom:12px}.gate-card{padding:18px 22px}.gate-seal{display:none}.gate-sparkle{margin-bottom:5px}.gate-title{font-size:2.2rem;margin:9px 0}.gate-copy{font-size:.86rem;line-height:1.5}.countdown{margin:12px auto}.gate-prayer{margin-top:10px}.gate-footnote{margin-top:10px}}
 @media(prefers-reduced-motion:reduce){.gate-seal{animation:none}}
-
-/* Main-page motion and interaction upgrades */
-:root{--scroll-progress:0%}
-#scrollProgress{position:fixed;top:0;left:0;width:100%;height:4px;z-index:10000;background:#e9e1fb66;pointer-events:none}
-#scrollProgress span{display:block;width:var(--scroll-progress);height:100%;background:linear-gradient(90deg,#b39ae8,#e5a5c3,#d7c7ff);box-shadow:0 0 12px #b39ae866;transition:width .08s linear}
-.bg-orb{transition:transform .35s ease-out}
-.hero-inner{animation:heroArrive 1s cubic-bezier(.2,.75,.25,1) both}
-.eyebrow{animation:badgeIn .8s .15s both}
-.sparkle{user-select:none;pointer-events:none}
-.cake-card,.letter-art,.letter-card,.final-card,.reveal-message{transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
-.cake-card:hover,.letter-card:hover,.final-card:hover{box-shadow:0 24px 70px #7c496018;border-color:#cbb9f2}
-.letter-art:hover .envelope{animation:envelopeWiggle .7s ease}
-.section-kicker{transition:letter-spacing .35s ease}
-section.is-visible .section-kicker{letter-spacing:.22em}
-.js-reveal{opacity:0;transform:translateY(24px) scale(.99);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
-.js-reveal.in-view{opacity:1;transform:translateY(0) scale(1)}
-.js-reveal.delay-1{transition-delay:.09s}.js-reveal.delay-2{transition-delay:.18s}.js-reveal.delay-3{transition-delay:.27s}
-#backToTop{position:fixed;right:20px;bottom:20px;z-index:20;width:48px;height:48px;border:1px solid #d8ccff;background:#ffffffed;color:#6f57a7;border-radius:50%;box-shadow:0 8px 25px #4b2d431a;display:grid;place-items:center;font-size:1.25rem;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s,visibility .25s,transform .25s;backdrop-filter:blur(10px)}
-#backToTop.visible{opacity:1;visibility:visible;transform:translateY(0)}
-#backToTop:hover{transform:translateY(-3px);background:#f4efff}
-.sparkle-burst{position:fixed;z-index:9998;pointer-events:none;font-size:18px;animation:burstFloat .85s ease-out forwards;filter:drop-shadow(0 2px 3px #b39ae844)}
-.primary:active,.secondary:active,.music-btn:active{transform:scale(.97)}
-button:disabled{cursor:default;opacity:.78}
-@keyframes heroArrive{from{opacity:0;transform:translateY(26px) scale(.985);filter:blur(4px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
-@keyframes badgeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-@keyframes envelopeWiggle{0%,100%{transform:rotate(-8deg) translateY(0)}25%{transform:rotate(-14deg) translateY(-4px)}55%{transform:rotate(2deg) translateY(-2px)}75%{transform:rotate(-11deg)}}
-@keyframes burstFloat{0%{opacity:0;transform:translate(-50%,-50%) scale(.4) rotate(0)}20%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.3) rotate(35deg)}}
-@media(max-width:680px){#backToTop{right:13px;bottom:13px;width:44px;height:44px}.js-reveal{transform:translateY(16px)}}
-@media(prefers-reduced-motion:reduce){.js-reveal{opacity:1;transform:none;transition:none}#backToTop,.bg-orb,.cake-card,.letter-art,.letter-card,.final-card,.reveal-message{transition:none}.hero-inner{animation:none}.sparkle-burst{display:none}}
-
-
-/* Birthday experience upgrades: envelope, mini quiz, and closing screen */
-.letter-grid.is-sealed{grid-template-columns:minmax(0,1fr)}
-.letter-grid.is-sealed .letter-art{min-height:270px}
-.letter-grid.is-sealed .letter-card{display:none}
-.letter-art{transition:background .5s ease, min-height .5s ease}
-.envelope-trigger{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:0;background:transparent;color:var(--ink);padding:18px;min-width:min(100%,260px);border-radius:22px}
-.envelope-trigger:focus-visible{outline:3px solid var(--rose);outline-offset:5px}
-.envelope-illustration{position:relative;display:block;width:164px;height:118px;filter:drop-shadow(0 12px 10px #8a4b6b26);transform:rotate(-5deg);transition:transform .5s cubic-bezier(.2,.8,.2,1),filter .5s;perspective:600px}
-.env-back,.env-front,.env-flap{position:absolute;inset:12px 5px 5px;border-radius:9px}
-.env-back{background:#a88de2;box-shadow:inset 0 0 0 2px #fff9}
-.env-paper{position:absolute;z-index:1;left:25px;right:25px;bottom:15px;height:82px;border-radius:7px 7px 3px 3px;background:linear-gradient(160deg,#fff,#f6f0ff);box-shadow:0 2px 8px #7656a522;display:grid;place-items:start center;padding-top:12px;color:#b49ae9;font-size:1.35rem;transition:transform .65s cubic-bezier(.2,.8,.2,1)}
-.env-back{z-index:0}.env-flap{z-index:4;inset:12px 5px auto;height:68px;border-radius:8px 8px 0 0;background:#c4b0f4;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform .55s cubic-bezier(.2,.8,.2,1),z-index .1s .2s}
-.env-front{z-index:3;background:linear-gradient(145deg,#d9ccff,#bda8ef);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border:1px solid #fff9}
-.env-heart{position:absolute;z-index:5;left:50%;top:52%;transform:translate(-50%,-50%);font-size:1.2rem;color:#fff8ff;text-shadow:0 1px 4px #8b70c7aa;transition:opacity .25s,transform .35s}
-.envelope-prompt{font-size:.88rem;font-weight:700;color:#7159a8;letter-spacing:.02em}
-.letter-grid.opened .letter-art{background:linear-gradient(145deg,#d5c5ff,#f5efff)}
-.letter-grid.opened .envelope-illustration{transform:translateY(10px) rotate(0) scale(.92);filter:drop-shadow(0 8px 8px #8a4b6b18)}
-.letter-grid.opened .env-flap{transform:rotateX(180deg);z-index:0}
-.letter-grid.opened .env-paper{transform:translateY(-48px) scale(1.04)}
-.letter-grid.opened .env-heart{opacity:0;transform:translate(-50%,-70%) scale(.6)}
-.letter-card.opened{display:block;animation:letterReveal .75s cubic-bezier(.2,.8,.2,1) both}
-@keyframes letterReveal{from{opacity:0;transform:translateY(24px) scale(.985);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:translateY(0) scale(1);clip-path:inset(0 0 0 0)}}
-.quiz-section{background:linear-gradient(180deg,#f8f4ff,#fffafd)}
-.quiz-card{max-width:680px;margin:0 auto;border:1px solid var(--line);border-radius:28px;background:#ffffffd9;padding:clamp(22px,4vw,34px);box-shadow:0 20px 65px #7c49600b;text-align:center}
-.quiz-progress{height:6px;background:#eee7fc;border-radius:999px;overflow:hidden;margin:0 0 25px}
-.quiz-progress span{display:block;height:100%;width:33.333%;border-radius:999px;background:linear-gradient(90deg,#a991e5,#e5a5c3);transition:width .35s}
-.quiz-count{font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);font-weight:700;margin-bottom:12px}
-.quiz-question{font:500 clamp(1.45rem,4vw,2rem)/1.25 "Playfair Display",serif;margin:0 auto 22px;max-width:500px}
-.quiz-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.quiz-option{border:1px solid #ded3f5;border-radius:16px;padding:13px 14px;background:#fff;color:var(--ink);text-align:left;line-height:1.45;transition:transform .2s,border-color .2s,background .2s}
-.quiz-option:hover{transform:translateY(-2px);border-color:#a991e5;background:#f8f4ff}
-.quiz-option:active{transform:scale(.985)}
-.quiz-option.selected{border-color:#9276d6!important;background:#f0eaff;box-shadow:0 0 0 2px #d8ccff66}
-.quiz-option:disabled{cursor:default;opacity:.82}
-.quiz-option.selected:disabled{opacity:1}
-.quiz-feedback{min-height:54px;margin:20px 0 0;padding:14px;border-radius:16px;background:#f7f2ff;color:#7159a8;line-height:1.6;font-size:.92rem}
-.quiz-next{margin-top:15px}
-.quiz-finish{display:none;margin-top:20px}
-.quiz-finish.show{display:block;animation:rise .5s ease}
-.quiz-finish p{color:var(--muted);line-height:1.75}
-.closing-section{padding-top:48px;background:radial-gradient(ellipse at 50% 10%,#eee5ff 0,transparent 55%)}
-.closing-card{position:relative;isolation:isolate;overflow:hidden;max-width:760px;margin:auto;text-align:center;padding:clamp(32px,7vw,70px) clamp(22px,5vw,50px);border-radius:34px;border:1px solid #d8ccff;background:linear-gradient(145deg,#fff 0%,#f6f0ff 55%,#fff7fb 100%);box-shadow:0 25px 80px #7c496018}
-.closing-card:before,.closing-card:after{content:"✦  ✧  ✦";position:absolute;z-index:-1;color:#c6b4f0;font-size:1.2rem;letter-spacing:1.2rem;opacity:.65;animation:closingFloat 5s ease-in-out infinite}
-.closing-card:before{top:20px;left:12px}.closing-card:after{bottom:20px;right:12px;animation-delay:-2.5s}
-.closing-orbit{font-size:2.6rem;display:inline-block;margin-bottom:14px;animation:closingFloat 3s ease-in-out infinite}
-.closing-card h2{font:500 clamp(2.2rem,6vw,4rem)/1.08 "Playfair Display",serif;letter-spacing:-.04em;margin:0 0 16px}
-.closing-card h2 em{color:var(--rose);font-weight:500}
-.closing-card p{max-width:490px;margin:0 auto 24px;color:var(--muted);line-height:1.85}
-.closing-signoff{font:italic 1.2rem "Playfair Display",serif;color:#8065c5;margin:0 0 24px}
-.replay-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px}
-.replay-status{min-height:1.5em;margin:13px 0 0!important;font-size:.82rem;color:#8065c5!important}
-
-.last-surprise-teaser{max-width:560px;margin:28px auto 25px;padding:23px 20px;border:1px dashed #c9b7f0;border-radius:24px;background:linear-gradient(145deg,#fbf8ff,#fff7fb);}
-.last-surprise-icon{display:inline-block;font-size:2rem;margin-bottom:8px;animation:closingFloat 3s ease-in-out infinite}
-.last-surprise-teaser h3{font:500 clamp(1.2rem,3.5vw,1.65rem)/1.3 "Playfair Display",serif;color:var(--ink);margin:0 0 10px}
-.last-surprise-teaser p{margin-bottom:16px}
-.last-surprise-reveal{margin-top:20px;padding:18px;border-radius:17px;background:#fff;border:1px solid #e6dcfb;animation:rise .55s ease}
-.last-surprise-reveal p{margin-bottom:10px}
-.last-surprise-signoff{font-weight:700;color:#8065c5!important;margin-bottom:0!important}
-@media(prefers-reduced-motion:reduce){.last-surprise-icon{animation:none}.last-surprise-reveal{animation:none}}
-
-@keyframes closingFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-9px) rotate(3deg)}}
-@media(max-width:540px){.quiz-options{grid-template-columns:minmax(0,1fr)}.quiz-option{text-align:center}.letter-grid.is-sealed .letter-art{min-height:235px}.closing-card{border-radius:26px}}
-@media(prefers-reduced-motion:reduce){.envelope,.envelope-paper,.letter-card.opened,.closing-orbit,.closing-card:before,.closing-card:after{animation:none;transition:none}.letter-card.opened{clip-path:none}}
-
-
-.hero-name-trigger{display:inline;padding:0 .12em;border:0;background:transparent;color:inherit;font:inherit;line-height:inherit;letter-spacing:inherit;vertical-align:baseline;cursor:pointer;position:relative;isolation:isolate}.hero-name-trigger::before{content:"";position:absolute;z-index:-1;inset:.08em -.1em .02em;border-radius:.18em;background:linear-gradient(120deg,#f7c9df,#d9c8ff);transform:rotate(-2deg);box-shadow:0 8px 24px #b68bc944;animation:sheGlow 2.4s ease-in-out infinite}.hero-name-trigger em{color:#6c438f;font-weight:600;text-decoration:underline;text-decoration-color:#fff8;text-decoration-thickness:.06em;text-underline-offset:.12em}.hero-name-trigger:hover em{ text-shadow:0 5px 24px #9276d655 }.hero-surprise-hint{display:flex;align-items:center;justify-content:center;gap:9px;width:fit-content;max-width:100%;margin:-3px auto 22px;padding:11px 17px;border:1px solid #d9c3f2;border-radius:999px;background:#fff9ff;color:#674a83;font-size:clamp(.82rem,2.3vw,.98rem);font-weight:600;box-shadow:0 8px 24px #bda1dc24;animation:hintPulse 2.8s ease-in-out infinite}.hero-surprise-hint .hint-arrow{font-size:1.2rem;animation:hintPoint 1s ease-in-out infinite alternate}@keyframes sheGlow{0%,100%{box-shadow:0 8px 24px #b68bc933}50%{box-shadow:0 8px 30px #b68bc977}}@keyframes hintPulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}@keyframes hintPoint{from{transform:translateY(-2px)}to{transform:translateY(3px)}}.portrait-modal{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:#21172dcc;backdrop-filter:blur(9px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}.portrait-modal.open{opacity:1;visibility:visible}.portrait-modal[hidden]{display:none}.portrait-modal-card{position:relative;width:min(100%,680px);max-height:92svh;overflow:auto;padding:14px;border:1px solid #ffffffa8;border-radius:26px;background:linear-gradient(145deg,#fbf8ff,#eee5ff);box-shadow:0 28px 90px #1b103955;transform:translateY(14px) scale(.98);transition:transform .3s ease}.portrait-modal.open .portrait-modal-card{transform:translateY(0) scale(1)}.portrait-modal-close{position:absolute;top:22px;right:22px;z-index:2;width:42px;height:42px;border:1px solid #ffffffc9;border-radius:50%;background:#fffdf2e8;color:#443456;font-size:1.5rem;line-height:1;box-shadow:0 4px 18px #2c1a3420}.portrait-modal-image{display:block;width:100%;max-height:calc(92svh - 90px);object-fit:contain;border-radius:17px}.portrait-download-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;margin:15px auto 2px;padding:12px 23px;border:1px solid #d4b9f2;border-radius:999px;background:linear-gradient(135deg,#c9a7f5,#a982df);color:#fff;font-size:.92rem;font-weight:700;text-decoration:none;box-shadow:0 7px 20px #9276d633;transition:transform .2s ease,box-shadow .2s ease}.portrait-download-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px #9276d655}.portrait-download-wrap{text-align:center}.portrait-image-error{display:none;padding:20px;text-align:center;color:#674a83;background:#f5edff;border-radius:14px}.portrait-placeholder{min-height:min(62svh,520px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:32px 20px;border-radius:17px;text-align:center;color:#59456f;background:radial-gradient(ellipse at 50% 35%,#fffaff 0%,#eee3ff 48%,#d9c8f1 100%);border:1px solid #ffffffc9}.portrait-placeholder-sparkles{font-size:1.6rem;letter-spacing:.45em;color:#a58ad5}.portrait-placeholder-icon{display:grid;place-items:center;width:92px;height:92px;border:1px solid #bca5e0;border-radius:50%;background:#ffffff8c;font-size:3.4rem;color:#a47ccf;box-shadow:0 12px 35px #8b6bb52b}.portrait-placeholder strong{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:600}.portrait-placeholder>span:last-child{font-size:.95rem;color:#766486}.portrait-modal-caption{text-align:center;color:var(--muted);font-size:.85rem;padding:12px 8px 4px;margin:0}.hero-name-trigger:focus-visible{outline:3px solid #9276d6;outline-offset:7px;border-radius:5px}@media(prefers-reduced-motion:reduce){.portrait-modal,.portrait-modal-card{transition:none}}
-
 </style>
 </head>
-<body>
-<div id="scrollProgress" aria-hidden="true"><span></span></div>
-<div id="countdownGate" role="status" aria-live="polite" hidden>
+<body class="locked">
+<div id="countdownGate" role="status" aria-live="polite">
  <div class="gate-card">
   <div class="gate-seal" aria-hidden="true">✉</div>
   <div class="gate-sparkle" aria-hidden="true">✦ ✧ ✦</div>
@@ -227,7 +127,8 @@ button:disabled{cursor:default;opacity:.78}
    <div class="count-unit"><span class="count-number" id="countMinutes">00</span><span class="count-label">Minutes</span></div>
    <div class="count-unit"><span class="count-number" id="countSeconds">00</span><span class="count-label">Seconds</span></div>
   </div>
-  <p class="gate-copy"><strong>Unlocks at 12:01 AM</strong></p>
+  <p class="gate-copy" id="unlockNote"><strong>Unlocks at 12:01 AM</strong></p>
+  <button class="primary" id="enterBirthdayBtn" type="button" hidden>Enter your birthday surprise ✨</button>
   <div class="gate-clue-wrap">
    <button class="gate-clue-btn" id="clueBtn" type="button">Curious? Reveal a tiny clue ✨</button>
    <p class="gate-clue" id="gateClue" aria-live="polite">No peeking yet. One clue at a time. 😉</p>
@@ -236,16 +137,7 @@ button:disabled{cursor:default;opacity:.78}
   <p class="gate-footnote">You can leave and come back. The surprise will be waiting.</p>
  </div>
 </div>
-<div class="portrait-modal" id="portraitModal" role="dialog" aria-modal="true" aria-labelledby="portraitCaption" hidden>
- <div class="portrait-modal-card">
-  <button class="portrait-modal-close" id="closePortraitModal" type="button" aria-label="Close portrait">×</button>
-  <img class="portrait-modal-image" id="portraitImage" src="she-portrait.png" alt="A birthday portrait made especially for She" onerror="this.style.display='none';document.getElementById('portraitImageError').style.display='block'">
-  <p class="portrait-image-error" id="portraitImageError">The portrait could not load. Please check that <strong>she-portrait.png</strong> is in the same GitHub Pages folder as <strong>index.html</strong>. 💜</p>
-  <div class="portrait-download-wrap"><a class="portrait-download-btn" href="https://drive.google.com/uc?export=download&amp;id=11VwTwpwIqEdf54l7jfJS2cv6DI5-krBd" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↓</span> Download Portrait</a></div>
-  <p class="portrait-modal-caption" id="portraitCaption">A little portrait moment for you. Tap the button above to save it. ✨💜</p>
- </div>
-</div>
-<div id="birthdaySite">
+<div id="birthdaySite" hidden>
 <div class="bg-orb orb1"></div><div class="bg-orb orb2"></div><div class="bg-orb orb3"></div>
 <header class="topbar"><div class="brand">A little something for you ✿</div><button class="music-btn" id="musicBtn" aria-label="Toggle background music">♫ Happy Birthday instrumental</button></header>
 <main>
@@ -253,10 +145,9 @@ button:disabled{cursor:default;opacity:.78}
   <span class="sparkle s1">✦</span><span class="sparkle s2">✧</span><span class="sparkle s3">✦</span><span class="sparkle s4">✧</span>
   <div class="hero-inner">
     <div class="eyebrow">✿ a tiny celebration of you</div>
-    <h1>Happy Birthday,<br><button id="heroName" class="hero-name-trigger" type="button" aria-haspopup="dialog" aria-label="Open She’s birthday portrait"><em>She.</em></button></h1>
-    <p class="hero-surprise-hint"><span class="hint-arrow" aria-hidden="true">↓</span> Your birthday surprises are waiting below. Scroll down and follow the little prompts to discover them! 💜</p>
+    <h1>Happy Birthday,<br><em id="heroName">She.</em></h1>
     <p class="hero-copy">Birthday mo today, kaya may little surprise ako for you! Praying na maging masaya ang day mo and that God fills your new year with peace, wisdom, good health, and lots of reasons to smile. 🎉</p>
-    <button class="primary" id="startBtn">Start exploring your surprises ↓</button>
+    <button class="primary" id="startBtn">Your little surprise awaits ↓</button>
     <div class="tiny-note">Made with effort, konting kulit, and prayers for a blessed year ahead. ✨</div>
   </div>
 </section>
@@ -278,56 +169,19 @@ button:disabled{cursor:default;opacity:.78}
 <section id="letter">
  <div class="section-inner"><div class="section-kicker">a note from me to you</div><h2 class="section-title">A little birthday letter</h2>
   <p class="section-intro">May konting message lang ako for you. Basahin mo lang kapag ready ka na. 😊</p>
-  <div class="letter-grid is-sealed" id="letterExperience">
-   <div class="letter-art">
-    <button class="envelope-trigger" id="openLetterBtn" type="button" aria-expanded="false" aria-controls="birthdayLetter">
-     <span class="envelope-illustration" aria-hidden="true">
-      <span class="env-paper"><span>✦</span></span>
-      <span class="env-back"></span>
-      <span class="env-flap"></span>
-      <span class="env-front"></span>
-      <span class="env-heart">♥</span>
-     </span>
-     <span class="envelope-prompt" id="envelopePrompt">Tap to open your letter ✨</span>
-    </button>
-   </div>
-   <article class="letter-card" id="birthdayLetter">
+  <div class="letter-grid">
+   <div class="letter-art"><div class="envelope">💌</div></div>
+   <article class="letter-card">
     <h3>Dear <span id="letterName">you</span>,</h3>
     <p>Happy birthday, She! 🥳 Thank God for your life! I pray na this new chapter brings you good health, genuine happiness, wisdom, and opportunities that help you grow. May God guide your steps and fill your days with peace, joy, and meaningful memories.</p>
     <p>Keep growing, keep learning, and keep using the gifts God has given you. Kapag may goals kang pinagdadasal at pinaghihirapan, I hope you stay patient and trust God’s timing. One step at a time lang. He can lead you even when the whole path isn’t clear yet.</p>
     <p>Kapag naging busy or stressful ang life, don’t forget to rest and spend time with God. Hindi kailangang laging perfect or mabilis ang progress. Keep praying, do your best, and remember na you don’t have to figure everything out all at once. God will give you strength for each day.</p>
     <p>I pray na mas marami pang tawanan, good memories, and people who encourage you to become the person God calls you to be. May He protect you, give you courage when things get difficult, and remind you of His goodness in every season. Enjoy your day, kain ng masarap, take lots of pictures, and have an awesome birthday! God bless you always. 🎂</p>
-    <div class="signature" style="font-style:normal"><span id="senderName">KUYA SYY 🤏🏻🤏🏻</span></div>
+    <div class="signature" style="font-style:normal">Your friend, <span id="senderName">your friend</span> ✨</div>
    </article>
   </div>
  </div>
 </section>
-
-<section class="quiz-section" id="birthdayQuiz">
- <div class="section-inner">
-  <div class="section-kicker">important birthday research</div>
-  <h2 class="section-title">A very serious birthday quiz.</h2>
-  <p class="section-intro">Three questions. Absolutely no academic value. Please answer with confidence. 😂</p>
-  <div class="quiz-card" id="quizCard">
-   <div class="quiz-progress" aria-hidden="true"><span id="quizProgressBar"></span></div>
-   <div class="quiz-count" id="quizCount">Question 1 of 3</div>
-   <h3 class="quiz-question" id="quizQuestion">What's the most important birthday activity?</h3>
-   <div class="quiz-options" id="quizOptions">
-    <button class="quiz-option" type="button" data-answer="0">Eat something delicious 🍰</button>
-    <button class="quiz-option" type="button" data-answer="1">Take cute pictures 📸</button>
-    <button class="quiz-option" type="button" data-answer="2">Rest and enjoy the day 😌</button>
-    <button class="quiz-option" type="button" data-answer="3">All of the above, obviously 💅</button>
-   </div>
-   <p class="quiz-feedback" id="quizFeedback" aria-live="polite">Choose wisely. The birthday committee is watching. 👀</p>
-   <button class="secondary quiz-next" id="quizNextBtn" type="button" hidden>Next question →</button>
-   <div class="quiz-finish" id="quizFinish">
-    <p><strong>Official result: Birthday Expert. 🏆</strong><br>You passed with flying colors. Your certificate is imaginary, but your birthday wishes are very real. May God bless your new year! 💜</p>
-    <button class="primary" id="quizReplayBtn" type="button">Take the quiz again 😂</button>
-   </div>
-  </div>
- </div>
-</section>
-
 <section class="surprise-section" id="surprise">
  <div class="section-inner"><div class="section-kicker">psst... there's more</div><h2 class="section-title">One more thing for you.</h2>
  <p class="section-intro">May maliit pang surprise dito. Sige na, open mo na! 🎁</p>
@@ -344,36 +198,8 @@ button:disabled{cursor:default;opacity:.78}
  <div class="final-hidden" id="finalHidden"><h3>A Little Reminder for You 💜</h3><p>Hey, birthday girl! Before you leave, here's a little reminder na I hope you'll carry with you, not just today, but even on the days when life feels a little heavier than usual.</p><p>Hindi laging madaling malaman kung saan ka ba talaga papunta sa buhay. Sometimes, things don't turn out the way we imagined them to be, and there are days when we start questioning if we're even on the right path. And that's okay. You don't have to figure everything out all at once.</p><p><strong>Hindi mo kailangang pilitin ang sarili mo sa isang bagay na unti-unting umuubos sa'yo just to prove that you're strong.</strong> Your health matters. Your peace matters. Your well-being matters, too. It's okay to take a step back, to rest, to change direction, or to start again. Hindi ibig sabihin no'n na sumuko ka. Sometimes, choosing what's healthier for you takes more courage than staying where you are.</p><p>And through it all, don't forget to bring your worries to God. You may not always understand where He's leading you, but you can trust Him one step at a time. You don't need to have your whole life figured out today.</p><p class="verse">“Be still, and know that I am God.”<br><strong>Psalm 46:10</strong></p><p>As you enter another year of your life, I pray na bigyan ka ni Lord ng wisdom sa mga decisions mo, courage to make the changes you need, strength for the difficult days, and peace habang hinahanap mo kung saan ka talaga magg-grow.</p><p>May you find a path that doesn't just help you get through each day, but allows you to live with peace, purpose, and joy.</p><p><strong>You are allowed to begin again. You are allowed to choose peace. And you are allowed to trust God's timing, even when you don't have all the answers yet.</strong></p><p class="closing">Praying for a year filled with God's grace, new beginnings, and better days ahead. Always remember to take care of yourself, too. God bless you! 💜</p></div>
  </div></div>
 </section>
-
-<section class="closing-section" id="closing">
- <div class="section-inner">
-  <div class="closing-card">
-   <span class="closing-orbit" aria-hidden="true">✦ ✧ ✦</span>
-   <h2>You've reached the<br><em>birthday ending!</em></h2>
-   <p>Thanks for exploring this little birthday corner. I hope it gave you a few smiles, a little encouragement, and a reminder that you're being prayed for as you step into another year. Keep trusting God, keep growing, and enjoy your day. 💜</p>
-   <div class="last-surprise-teaser" id="lastSurpriseTeaser">
-    <span class="last-surprise-icon" aria-hidden="true">🎁✨</span>
-    <h3>I HAVE A BIRTHDAY SURPRISE FOR YOU, SHE! 👀</h3>
-    <p>Click something on this website to reveal it. Yes, this is your official excuse to investigate everything. 😂</p>
-    <button class="secondary" id="lastSurpriseBtn" type="button" aria-expanded="false">Wait, reveal one more thing 👀</button>
-    <div class="last-surprise-reveal" id="lastSurpriseReveal" hidden aria-live="polite">
-     <p><strong>SURPRISE! 🎉</strong></p>
-     <p>Your mission was to explore, click around, and collect a little birthday joy. I hope this tiny corner of the internet made you smile. 💜</p>
-     <p>Praying that God blesses you with a beautiful year ahead, fills your heart with peace, and gives you countless reasons to smile. ✨</p>
-     <p><strong>P.S. 👀</strong> Have you found your name yet? Find it on the main page and click it. There's a little something waiting for you! 💜</p>
-     <p class="last-surprise-signoff">From, KUYA SYY 🤏🏻🤏🏻</p>
-    </div>
-   </div>
-   <div class="closing-signoff">KUYA SYY 🤏🏻🤏🏻</div>
-   <button class="primary replay-btn" id="replayBirthdayBtn" type="button">↻ Replay the birthday magic</button>
-   <p id="replayStatus" class="replay-status" aria-live="polite"></p>
-  </div>
- </div>
-</section>
-
 </main>
 <footer>A little birthday page with prayers and blessings <span class="footer-heart">✦</span> <span id="footerName">birthday girl</span></footer>
-<button id="backToTop" type="button" aria-label="Back to top" title="Back to top">↑</button>
 <audio id="bgMusic" autoplay loop preload="auto" playsinline></audio>
 </div>
 <script>
@@ -383,7 +209,7 @@ button:disabled{cursor:default;opacity:.78}
 */
 const CONFIG = {
   birthdayName: "She", // change this only if you decide to use her actual name
-  senderName: "KUYA SYY 🤏🏻🤏🏻", // personalized sign-off
+  senderName: "your friend", // replace with your name or nickname if you want
   musicFile: "happy-birthday-instrumental.mp3"
 };
 const setText=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value};
@@ -407,7 +233,7 @@ async function tryStartMusic(){
  try{await audio.play();musicPlaying=true;musicBtn.textContent="♫ Music on";return true;}
  catch(e){musicBtn.textContent="♫ Tap for music";return false;}
 }
-// Landing page disabled for now. The main birthday page is visible immediately.
+// Lock the full birthday page until 12:01 AM in the visitor's local time.
 const gate=document.getElementById("countdownGate");
 const birthdaySite=document.getElementById("birthdaySite");
 const pad=n=>String(n).padStart(2,"0");
@@ -417,6 +243,14 @@ function getUnlockTime(){
  return new Date(2026,9,20,0,1,0,0);
 }
 let unlockAt=getUnlockTime();
+function showEnterButton(){
+ const enterBtn=document.getElementById("enterBirthdayBtn");
+ const countdown=document.querySelector("#countdownGate .countdown");
+ const unlockNote=document.getElementById("unlockNote");
+ if(countdown)countdown.hidden=true;
+ if(unlockNote)unlockNote.textContent="It's time! Your birthday surprise is ready. 💜";
+ if(enterBtn)enterBtn.hidden=false;
+}
 function unlockBirthdayPage(){
  if(!birthdaySite.hidden)return;
  birthdaySite.hidden=false;
@@ -425,6 +259,7 @@ function unlockBirthdayPage(){
  // Music was already attempted on page load; retry when the birthday content unlocks as a fallback.
  tryStartMusic();
 }
+document.getElementById("enterBirthdayBtn").addEventListener("click",unlockBirthdayPage);
 function updateCountdown(){
  const remaining=Math.max(0,unlockAt.getTime()-Date.now());
  const totalSeconds=Math.floor(remaining/1000);
@@ -434,12 +269,15 @@ function updateCountdown(){
  const seconds=totalSeconds%60;
  setText("countDays",pad(days));setText("countHours",pad(hours));
  setText("countMinutes",pad(minutes));setText("countSeconds",pad(seconds));
- if(remaining<=0){unlockBirthdayPage();return;}
+ if(remaining<=0){showEnterButton();return;}
 }
-// The countdown gate is temporarily disabled while the main page is being edited.
-// Re-enable the gate later by removing the hidden attribute from #countdownGate,
-// adding hidden to #birthdaySite, and restoring the body class="locked".
-const countdownInterval=null;
+// Keep the landing page visible after the countdown. The visitor enters manually.
+if(Date.now()>=unlockAt.getTime()) showEnterButton();
+else updateCountdown();
+const countdownInterval=setInterval(()=>{
+ if(birthdaySite.hidden)updateCountdown();
+ else clearInterval(countdownInterval);
+},250);
 // Optional tiny clues make the locked landing page feel playful without exposing the surprise.
 const clues=[
  "Clue 1: If you're trying to figure everything out, please know that even the creator of this website barely knows what they're doing. 😭😂",
@@ -500,157 +338,6 @@ musicBtn.addEventListener("click",async()=>{
  if(musicPlaying){audio.pause();musicPlaying=false;musicBtn.textContent="♫ Play music";}
  else {await tryStartMusic();if(!musicPlaying){alert("Make sure the file happy-birthday-instrumental.mp3 is in the same folder as index.html. Some browsers also require a tap before music can start.");}}
 });
-
-
-
-// Interactive letter envelope: the birthday letter stays tucked away until she opens it.
-const letterExperience=document.getElementById('letterExperience');
-const openLetterBtn=document.getElementById('openLetterBtn');
-const birthdayLetter=document.getElementById('birthdayLetter');
-const envelopePrompt=document.getElementById('envelopePrompt');
-function openBirthdayLetter(){
- if(!letterExperience||letterExperience.classList.contains('opened'))return;
- letterExperience.classList.remove('is-sealed');
- letterExperience.classList.add('opened');
- birthdayLetter.classList.add('opened');
- birthdayLetter.setAttribute('aria-hidden','false');
- openLetterBtn.setAttribute('aria-expanded','true');
- envelopePrompt.textContent='Letter opened. Enjoy reading! 💜';
- celebrate(18);
- setTimeout(()=>birthdayLetter.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'nearest'}),220);
-}
-if(openLetterBtn){birthdayLetter.setAttribute('aria-hidden','true');openLetterBtn.addEventListener('click',openBirthdayLetter);}
-
-// Tiny three-question birthday quiz with silly, friendly responses.
-const quizQuestions=[
- {q:'What is the most important birthday activity?',options:['Eat something delicious 🍰','Take cute pictures 📸','Rest and enjoy the day 😌','All of the above, obviously 💅'],feedback:['Excellent priorities. Cake is a very serious matter. 🍰','Evidence for the birthday archives. Approved. 📸','A well-rested birthday celebrant? We love to see it. 😌','Correct. You understood the assignment. 💅']},
- {q:'A birthday wish is ready. What do you do first?',options:['Pray about it 🙏','Keep it a secret 🤫','Make a plan and do my best 📝','All three, with God’s help ✨'],feedback:['Amen. May God hear the prayers in your heart. 🙏','Mysterious. The birthday committee respects your privacy. 🤫','Responsible behavior detected. Very impressive. 📝','A wise answer. Pray, plan, and take it one step at a time. ✨']},
- {q:'Choose your official birthday title.',options:['Queen of coffee ☕','Director of cute selfies 📸','Chief nap officer 😴','Birthday legend, obviously 🏆'],feedback:['Coffee royalty! May your cup be full and your caffeine hit just right. ☕','The camera roll is about to have a busy day. 📸','Your responsibilities include resting responsibly. 😴','Confidence level: birthday royalty. We accept. 🏆']}
-];
-let quizIndex=0,quizAnswered=false;
-const quizQuestionEl=document.getElementById('quizQuestion');
-const quizOptionsEl=document.getElementById('quizOptions');
-const quizFeedback=document.getElementById('quizFeedback');
-const quizCount=document.getElementById('quizCount');
-const quizProgressBar=document.getElementById('quizProgressBar');
-const quizNextBtn=document.getElementById('quizNextBtn');
-const quizFinish=document.getElementById('quizFinish');
-function renderQuiz(){
- const item=quizQuestions[quizIndex];quizAnswered=false;
- quizCount.textContent=`Question ${quizIndex+1} of ${quizQuestions.length}`;
- quizProgressBar.style.width=((quizIndex+1)/quizQuestions.length*100)+'%';
- quizQuestionEl.textContent=item.q;quizOptionsEl.replaceChildren();
- item.options.forEach((option,i)=>{const button=document.createElement('button');button.type='button';button.className='quiz-option';button.textContent=option;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>answerQuiz(i));quizOptionsEl.appendChild(button);});
- quizFeedback.textContent='Choose wisely. The birthday committee is watching. 👀';
- quizNextBtn.hidden=true;quizFinish.classList.remove('show');quizOptionsEl.hidden=false;
-}
-function answerQuiz(index){
- if(quizAnswered)return;quizAnswered=true;
- const item=quizQuestions[quizIndex];
- quizFeedback.textContent=item.feedback[index];
- [...quizOptionsEl.querySelectorAll('button')].forEach((button,i)=>{button.disabled=true;button.setAttribute('aria-pressed',String(i===index));if(i===index)button.classList.add('selected');});
- if(quizIndex<quizQuestions.length-1){quizNextBtn.hidden=false;quizNextBtn.textContent='Next question →';}
- else{quizNextBtn.hidden=true;quizOptionsEl.hidden=true;quizFinish.classList.add('show');quizFeedback.textContent='Quiz complete! The birthday committee has reached a very official conclusion. 🎉';celebrate(20);}
-}
-if(quizOptionsEl)renderQuiz();
-if(quizNextBtn)quizNextBtn.addEventListener('click',()=>{if(!quizAnswered)return;quizIndex++;renderQuiz();});
-const quizReplayBtn=document.getElementById('quizReplayBtn');
-if(quizReplayBtn)quizReplayBtn.addEventListener('click',()=>{quizIndex=0;renderQuiz();document.getElementById('quizCard').scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'center'});});
-
-
-// Final-page birthday surprise prompt and reveal.
-const lastSurpriseBtn=document.getElementById('lastSurpriseBtn');
-const lastSurpriseReveal=document.getElementById('lastSurpriseReveal');
-if(lastSurpriseBtn&&lastSurpriseReveal){
- lastSurpriseBtn.addEventListener('click',()=>{
-  const isOpen=!lastSurpriseReveal.hidden;
-  lastSurpriseReveal.hidden=isOpen;
-  lastSurpriseBtn.setAttribute('aria-expanded',String(!isOpen));
-  lastSurpriseBtn.textContent=isOpen?'Wait, reveal one more thing 👀':'Surprise revealed! ✨';
-  if(!isOpen){celebrate(28);setTimeout(()=>lastSurpriseReveal.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'nearest'}),100);}
- });
-}
-
-// Replay the experience by resetting the interactive moments, then returning to the beginning.
-const replayBirthdayBtn=document.getElementById('replayBirthdayBtn');
-if(replayBirthdayBtn)replayBirthdayBtn.addEventListener('click',()=>{
- const flame=document.getElementById('flame'),blowBtn=document.getElementById('blowBtn');
- flame.classList.remove('out');document.getElementById('cakeStatus').textContent='';blowBtn.disabled=false;blowBtn.textContent='Make a wish & blow ✨';
- if(letterExperience){letterExperience.classList.add('is-sealed');letterExperience.classList.remove('opened');birthdayLetter.classList.remove('opened');birthdayLetter.setAttribute('aria-hidden','true');openLetterBtn.setAttribute('aria-expanded','false');envelopePrompt.textContent='Tap to open your letter ✨';}
- gift.classList.remove('open');reveal.classList.remove('show');document.getElementById('giftCaption').textContent='Tap mo yung gift para makita ang surprise.';
- document.getElementById('finalHidden').classList.remove('show');document.getElementById('finalBtn').textContent='May last message pa…';
- if(lastSurpriseReveal&&lastSurpriseBtn){lastSurpriseReveal.hidden=true;lastSurpriseBtn.setAttribute('aria-expanded','false');lastSurpriseBtn.textContent='Wait, reveal one more thing 👀';}
- quizIndex=0;renderQuiz();
- setText('replayStatus','Everything is reset. Ready for another round? ✨');celebrate(32);window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});
-});
-
-// Main-page polish: scroll progress, gentle reveal animations, quick return, and tiny sparkles.
-const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const progressBar=document.getElementById('scrollProgress');
-const backToTop=document.getElementById('backToTop');
-let scrollTicking=false;
-function updatePageScroll(){
- const maxScroll=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
- const pct=Math.min(100,Math.max(0,(window.scrollY/maxScroll)*100));
- document.documentElement.style.setProperty('--scroll-progress',pct+'%');
- if(backToTop)backToTop.classList.toggle('visible',window.scrollY>420);
- document.querySelectorAll('section').forEach(section=>{
-  const r=section.getBoundingClientRect();
-  if(r.top<window.innerHeight*.78&&r.bottom>window.innerHeight*.18)section.classList.add('is-visible');
- });
- scrollTicking=false;
-}
-window.addEventListener('scroll',()=>{if(!scrollTicking){window.requestAnimationFrame(updatePageScroll);scrollTicking=true;}},{passive:true});
-window.addEventListener('resize',updatePageScroll,{passive:true});
-if(backToTop)backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'}));
-
-// Reveal section content as it enters the viewport. The content remains visible if animation APIs are unavailable.
-const revealTargets=document.querySelectorAll('.section-kicker,.section-title,.section-intro,.cake-card,.letter-art,.letter-card,.gift-stage,.final-card,.quiz-card,.closing-card,footer');
-if(!reduceMotion&&'IntersectionObserver' in window){
- const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
-  if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target);}
- }),{threshold:.12,rootMargin:'0px 0px -30px 0px'});
- revealTargets.forEach((el,i)=>{el.classList.add('js-reveal');if(i%3===1)el.classList.add('delay-1');if(i%3===2)el.classList.add('delay-2');revealObserver.observe(el);});
-}else{revealTargets.forEach(el=>el.classList.add('in-view'));}
-
-// A small decorative sparkle burst on empty-space taps. Buttons and links keep their normal behavior.
-const sparkleSymbols=['✦','✧','✿','✷','♡'];
-document.addEventListener('pointerdown',event=>{
- if(reduceMotion||event.pointerType==='touch'&&event.target.closest('button,a')||event.target.closest('button,a,input,textarea,select'))return;
- if(event.target.closest('.letter-card,.final-card,.reveal-message'))return;
- for(let i=0;i<4;i++){
-  const bit=document.createElement('span');bit.className='sparkle-burst';bit.textContent=sparkleSymbols[Math.floor(Math.random()*sparkleSymbols.length)];
-  bit.style.left=event.clientX+'px';bit.style.top=event.clientY+'px';
-  bit.style.setProperty('--dx',(Math.random()*90-45)+'px');bit.style.setProperty('--dy',(Math.random()*-90-10)+'px');
-  bit.style.color=['#b39ae8','#e5a5c3','#c3b0f0'][Math.floor(Math.random()*3)];document.body.appendChild(bit);setTimeout(()=>bit.remove(),950);
- }
-},{passive:true});
-updatePageScroll();
-// Clicking “She” in the hero opens her portrait in a lavender modal.
-const heroNameTrigger=document.getElementById('heroName');
-const portraitModal=document.getElementById('portraitModal');
-const closePortraitModal=document.getElementById('closePortraitModal');
-let previousPortraitFocus=null;
-function openPortraitModal(){
- if(!portraitModal||!closePortraitModal)return;
- previousPortraitFocus=document.activeElement;
- portraitModal.hidden=false;
- requestAnimationFrame(()=>portraitModal.classList.add('open'));
- document.body.style.overflow='hidden';
- closePortraitModal.focus();
-}
-function closePortrait(){
- if(!portraitModal)return;
- portraitModal.classList.remove('open');
- document.body.style.overflow='';
- setTimeout(()=>{portraitModal.hidden=true;if(previousPortraitFocus)previousPortraitFocus.focus();},reduceMotion?0:260);
-}
-if(heroNameTrigger)heroNameTrigger.addEventListener('click',openPortraitModal);
-if(closePortraitModal)closePortraitModal.addEventListener('click',closePortrait);
-if(portraitModal)portraitModal.addEventListener('click',event=>{if(event.target===portraitModal)closePortrait();});
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&portraitModal&&!portraitModal.hidden)closePortrait();});
-
 </script>
-
 </body>
 </html>
