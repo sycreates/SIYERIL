@@ -376,8 +376,9 @@ button:disabled{cursor:default;opacity:.78}
 </main>
 <footer>A little birthday page with prayers and blessings <span class="footer-heart">✦</span> <span id="footerName">birthday girl</span></footer>
 <button id="backToTop" type="button" aria-label="Back to top" title="Back to top">↑</button>
-<audio id="bgMusic" autoplay loop preload="auto" playsinline></audio>
 </div>
+<!-- Keep the music player outside the hidden birthday content so it can start on the landing page. -->
+<audio id="bgMusic" autoplay loop preload="auto" playsinline></audio>
 <script>
 /* QUICK PERSONALIZATION:
    Change the values below before publishing.
@@ -406,8 +407,8 @@ audio.src=CONFIG.musicFile;
 // Attempt unmuted autoplay as soon as the website is opened, including on the countdown landing page.
 let musicPlaying=false;
 async function tryStartMusic(){
- try{await audio.play();musicPlaying=true;musicBtn.textContent="♫ Music on";return true;}
- catch(e){musicBtn.textContent="♫ Tap for music";return false;}
+ try{await audio.play();musicPlaying=true;if(musicBtn)musicBtn.textContent="♫ Music on";return true;}
+ catch(e){if(musicBtn)musicBtn.textContent="♫ Tap for music";return false;}
 }
 // Landing page and birthday page gate.
 const gate=document.getElementById("countdownGate");
