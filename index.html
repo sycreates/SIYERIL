@@ -239,17 +239,18 @@ button:disabled{cursor:default;opacity:.78}
 <div class="portrait-modal" id="portraitModal" role="dialog" aria-modal="true" aria-labelledby="portraitCaption" hidden>
  <div class="portrait-modal-card">
   <button class="portrait-modal-close" id="closePortraitModal" type="button" aria-label="Close portrait">×</button>
-  <div class="portrait-placeholder" role="img" aria-label="Portrait will be added later">
+  <img
+   class="portrait-modal-image"
+   src="./she-portrait.png"
+   alt="She’s birthday portrait"
+   onerror="this.style.display='none';document.getElementById('portraitImageFallback').hidden=false;"
+  />
+  <div class="portrait-placeholder" id="portraitImageFallback" hidden role="status">
    <span class="portrait-placeholder-sparkles" aria-hidden="true">✦ ✧ ✦</span>
    <span class="portrait-placeholder-icon" aria-hidden="true">♡</span>
-  
-<img
-  class="portrait-modal-image"
-  src="./she-portrait.png"
-  alt="Her birthday portrait"
-  onerror="this.style.display='none'; this.insertAdjacentHTML('afterend','<p style=&quot;color:#786b91;text-align:center;padding:20px&quot;>Portrait could not be loaded. Please check the image filename.</p>')"
-/>
-
+   <strong>Portrait could not load.</strong>
+   <span>Check that she-portrait.png is beside index.html in GitHub. 💜</span>
+  </div>
   <p class="portrait-modal-caption" id="portraitCaption">A little portrait moment for the birthday celebrant ✨💜</p>
  </div>
 </div>
