@@ -208,7 +208,7 @@ button:disabled{cursor:default;opacity:.78}
 @media(prefers-reduced-motion:reduce){.envelope,.envelope-paper,.letter-card.opened,.closing-orbit,.closing-card:before,.closing-card:after{animation:none;transition:none}.letter-card.opened{clip-path:none}}
 
 
-.hero-name-trigger{display:inline;padding:0;border:0;background:transparent;color:inherit;font:inherit;line-height:inherit;letter-spacing:inherit;vertical-align:baseline;cursor:pointer}.hero-name-trigger em{color:var(--rose);font-weight:500}.hero-name-trigger:hover em{ text-shadow:0 5px 24px #9276d655 }.portrait-modal{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:#21172dcc;backdrop-filter:blur(9px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}.portrait-modal.open{opacity:1;visibility:visible}.portrait-modal[hidden]{display:none}.portrait-modal-card{position:relative;width:min(100%,680px);max-height:92svh;overflow:auto;padding:14px;border:1px solid #ffffffa8;border-radius:26px;background:linear-gradient(145deg,#fbf8ff,#eee5ff);box-shadow:0 28px 90px #1b103955;transform:translateY(14px) scale(.98);transition:transform .3s ease}.portrait-modal.open .portrait-modal-card{transform:translateY(0) scale(1)}.portrait-modal-close{position:absolute;top:22px;right:22px;z-index:2;width:42px;height:42px;border:1px solid #ffffffc9;border-radius:50%;background:#fffdf2e8;color:#443456;font-size:1.5rem;line-height:1;box-shadow:0 4px 18px #2c1a3420}.portrait-modal-image{display:block;width:100%;max-height:calc(92svh - 90px);object-fit:contain;border-radius:17px}.portrait-placeholder{min-height:min(62svh,520px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:32px 20px;border-radius:17px;text-align:center;color:#59456f;background:radial-gradient(ellipse at 50% 35%,#fffaff 0%,#eee3ff 48%,#d9c8f1 100%);border:1px solid #ffffffc9}.portrait-placeholder-sparkles{font-size:1.6rem;letter-spacing:.45em;color:#a58ad5}.portrait-placeholder-icon{display:grid;place-items:center;width:92px;height:92px;border:1px solid #bca5e0;border-radius:50%;background:#ffffff8c;font-size:3.4rem;color:#a47ccf;box-shadow:0 12px 35px #8b6bb52b}.portrait-placeholder strong{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:600}.portrait-placeholder>span:last-child{font-size:.95rem;color:#766486}.portrait-modal-caption{text-align:center;color:var(--muted);font-size:.85rem;padding:12px 8px 4px;margin:0}.hero-name-trigger:focus-visible{outline:3px solid #9276d6;outline-offset:7px;border-radius:5px}@media(prefers-reduced-motion:reduce){.portrait-modal,.portrait-modal-card{transition:none}}
+.hero-name-trigger{display:inline;padding:0 .12em;border:0;background:transparent;color:inherit;font:inherit;line-height:inherit;letter-spacing:inherit;vertical-align:baseline;cursor:pointer;position:relative;isolation:isolate}.hero-name-trigger::before{content:"";position:absolute;z-index:-1;inset:.08em -.1em .02em;border-radius:.18em;background:linear-gradient(120deg,#f7c9df,#d9c8ff);transform:rotate(-2deg);box-shadow:0 8px 24px #b68bc944;animation:sheGlow 2.4s ease-in-out infinite}.hero-name-trigger em{color:#6c438f;font-weight:600;text-decoration:underline;text-decoration-color:#fff8;text-decoration-thickness:.06em;text-underline-offset:.12em}.hero-name-trigger:hover em{ text-shadow:0 5px 24px #9276d655 }.hero-surprise-hint{display:flex;align-items:center;justify-content:center;gap:9px;width:fit-content;max-width:100%;margin:-3px auto 22px;padding:11px 17px;border:1px solid #d9c3f2;border-radius:999px;background:#fff9ff;color:#674a83;font-size:clamp(.82rem,2.3vw,.98rem);font-weight:600;box-shadow:0 8px 24px #bda1dc24;animation:hintPulse 2.8s ease-in-out infinite}.hero-surprise-hint .hint-arrow{font-size:1.2rem;animation:hintPoint 1s ease-in-out infinite alternate}@keyframes sheGlow{0%,100%{box-shadow:0 8px 24px #b68bc933}50%{box-shadow:0 8px 30px #b68bc977}}@keyframes hintPulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}@keyframes hintPoint{from{transform:translateY(-2px)}to{transform:translateY(3px)}}.portrait-modal{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:#21172dcc;backdrop-filter:blur(9px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}.portrait-modal.open{opacity:1;visibility:visible}.portrait-modal[hidden]{display:none}.portrait-modal-card{position:relative;width:min(100%,680px);max-height:92svh;overflow:auto;padding:14px;border:1px solid #ffffffa8;border-radius:26px;background:linear-gradient(145deg,#fbf8ff,#eee5ff);box-shadow:0 28px 90px #1b103955;transform:translateY(14px) scale(.98);transition:transform .3s ease}.portrait-modal.open .portrait-modal-card{transform:translateY(0) scale(1)}.portrait-modal-close{position:absolute;top:22px;right:22px;z-index:2;width:42px;height:42px;border:1px solid #ffffffc9;border-radius:50%;background:#fffdf2e8;color:#443456;font-size:1.5rem;line-height:1;box-shadow:0 4px 18px #2c1a3420}.portrait-modal-image{display:block;width:100%;max-height:calc(92svh - 90px);object-fit:contain;border-radius:17px}.portrait-download-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;margin:15px auto 2px;padding:12px 23px;border:1px solid #d4b9f2;border-radius:999px;background:linear-gradient(135deg,#c9a7f5,#a982df);color:#fff;font-size:.92rem;font-weight:700;text-decoration:none;box-shadow:0 7px 20px #9276d633;transition:transform .2s ease,box-shadow .2s ease}.portrait-download-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px #9276d655}.portrait-download-wrap{text-align:center}.portrait-image-error{display:none;padding:20px;text-align:center;color:#674a83;background:#f5edff;border-radius:14px}.portrait-placeholder{min-height:min(62svh,520px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:32px 20px;border-radius:17px;text-align:center;color:#59456f;background:radial-gradient(ellipse at 50% 35%,#fffaff 0%,#eee3ff 48%,#d9c8f1 100%);border:1px solid #ffffffc9}.portrait-placeholder-sparkles{font-size:1.6rem;letter-spacing:.45em;color:#a58ad5}.portrait-placeholder-icon{display:grid;place-items:center;width:92px;height:92px;border:1px solid #bca5e0;border-radius:50%;background:#ffffff8c;font-size:3.4rem;color:#a47ccf;box-shadow:0 12px 35px #8b6bb52b}.portrait-placeholder strong{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:600}.portrait-placeholder>span:last-child{font-size:.95rem;color:#766486}.portrait-modal-caption{text-align:center;color:var(--muted);font-size:.85rem;padding:12px 8px 4px;margin:0}.hero-name-trigger:focus-visible{outline:3px solid #9276d6;outline-offset:7px;border-radius:5px}@media(prefers-reduced-motion:reduce){.portrait-modal,.portrait-modal-card{transition:none}}
 
 </style>
 </head>
@@ -239,19 +239,10 @@ button:disabled{cursor:default;opacity:.78}
 <div class="portrait-modal" id="portraitModal" role="dialog" aria-modal="true" aria-labelledby="portraitCaption" hidden>
  <div class="portrait-modal-card">
   <button class="portrait-modal-close" id="closePortraitModal" type="button" aria-label="Close portrait">×</button>
-  <img
-   class="portrait-modal-image"
-   src="./she-portrait.png"
-   alt="She’s birthday portrait"
-   onerror="this.style.display='none';document.getElementById('portraitImageFallback').hidden=false;"
-  />
-  <div class="portrait-placeholder" id="portraitImageFallback" hidden role="status">
-   <span class="portrait-placeholder-sparkles" aria-hidden="true">✦ ✧ ✦</span>
-   <span class="portrait-placeholder-icon" aria-hidden="true">♡</span>
-   <strong>Portrait could not load.</strong>
-   <span>Check that she-portrait.png is beside index.html in GitHub. 💜</span>
-  </div>
-  <p class="portrait-modal-caption" id="portraitCaption">A little portrait moment for the birthday celebrant ✨💜</p>
+  <img class="portrait-modal-image" id="portraitImage" src="she-portrait.png" alt="A birthday portrait made especially for She" onerror="this.style.display='none';document.getElementById('portraitImageError').style.display='block'">
+  <p class="portrait-image-error" id="portraitImageError">The portrait could not load. Please check that <strong>she-portrait.png</strong> is in the same GitHub Pages folder as <strong>index.html</strong>. 💜</p>
+  <div class="portrait-download-wrap"><a class="portrait-download-btn" href="https://drive.google.com/uc?export=download&amp;id=11VwTwpwIqEdf54l7jfJS2cv6DI5-krBd" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↓</span> Download Portrait</a></div>
+  <p class="portrait-modal-caption" id="portraitCaption">A little portrait moment for you. Tap the button above to save it. ✨💜</p>
  </div>
 </div>
 <div id="birthdaySite">
@@ -263,8 +254,9 @@ button:disabled{cursor:default;opacity:.78}
   <div class="hero-inner">
     <div class="eyebrow">✿ a tiny celebration of you</div>
     <h1>Happy Birthday,<br><button id="heroName" class="hero-name-trigger" type="button" aria-haspopup="dialog" aria-label="Open She’s birthday portrait"><em>She.</em></button></h1>
+    <p class="hero-surprise-hint"><span class="hint-arrow" aria-hidden="true">↓</span> Your birthday surprises are waiting below. Scroll down and follow the little prompts to discover them! 💜</p>
     <p class="hero-copy">Birthday mo today, kaya may little surprise ako for you! Praying na maging masaya ang day mo and that God fills your new year with peace, wisdom, good health, and lots of reasons to smile. 🎉</p>
-    <button class="primary" id="startBtn">Your little surprise awaits ↓</button>
+    <button class="primary" id="startBtn">Start exploring your surprises ↓</button>
     <div class="tiny-note">Made with effort, konting kulit, and prayers for a blessed year ahead. ✨</div>
   </div>
 </section>
@@ -365,7 +357,10 @@ button:disabled{cursor:default;opacity:.78}
     <p>Click something on this website to reveal it. Yes, this is your official excuse to investigate everything. 😂</p>
     <button class="secondary" id="lastSurpriseBtn" type="button" aria-expanded="false">Wait, reveal one more thing 👀</button>
     <div class="last-surprise-reveal" id="lastSurpriseReveal" hidden aria-live="polite">
-     <p><strong>SURPRISE! 🎉</strong> Your mission was to explore, click around, and collect a little birthday joy. I hope this tiny corner made you smile. Praying that God blesses you with a beautiful year ahead. 💜</p>
+     <p><strong>SURPRISE! 🎉</strong></p>
+     <p>Your mission was to explore, click around, and collect a little birthday joy. I hope this tiny corner of the internet made you smile. 💜</p>
+     <p>Praying that God blesses you with a beautiful year ahead, fills your heart with peace, and gives you countless reasons to smile. ✨</p>
+     <p><strong>P.S. 👀</strong> Have you found your name yet? Find it on the main page and click it. There's a little something waiting for you! 💜</p>
      <p class="last-surprise-signoff">From, KUYA SYY 🤏🏻🤏🏻</p>
     </div>
    </div>
