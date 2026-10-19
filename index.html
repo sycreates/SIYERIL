@@ -39,6 +39,7 @@ body.locked{overflow:hidden}
 .count-number{display:block;font:500 clamp(1.8rem,5vw,2.65rem)/1 "Playfair Display",serif;color:#66519c;font-variant-numeric:tabular-nums}
 .count-label{display:block;margin-top:8px;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:#8b7ba8}
 .gate-footnote{font-size:.77rem;color:#a193ba;margin:18px 0 0}
+.gate-music-btn{margin:16px auto 0;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #cdbcf4;background:linear-gradient(135deg,#f5f0ff,#fff);color:#6f55a8;border-radius:999px;padding:12px 19px;font-weight:700;font-size:.9rem;box-shadow:0 8px 22px #8065c512;transition:transform .2s,box-shadow .2s,background .2s}.gate-music-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px #8065c522;background:#fff}.gate-music-note{font-size:.76rem;color:#9584b3;margin:8px 0 0;line-height:1.5}
 .gate-prayer{font:italic 1rem/1.6 "Playfair Display",serif;color:#8065c5;margin:24px 0 0}
 .gate-seal{width:66px;height:66px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#e7ddff,#cdbbff);color:#7356b3;font-size:1.8rem;box-shadow:0 8px 22px #8065c51c;animation:sealFloat 3s ease-in-out infinite}
 .gate-clue-wrap{margin:20px auto 0;max-width:390px}
@@ -229,6 +230,8 @@ button:disabled{cursor:default;opacity:.78}
    <div class="count-unit"><span class="count-number" id="countSeconds">00</span><span class="count-label">Seconds</span></div>
   </div>
   <p class="gate-copy" id="unlockNote"><strong>Unlocks at 12:01 AM</strong></p>
+  <button class="gate-music-btn" id="landingMusicBtn" type="button" aria-pressed="false">♫ Play birthday music</button>
+  <p class="gate-music-note" id="landingMusicNote" aria-live="polite">Tap to play the birthday instrumental. 🎵</p>
   <button class="primary" id="enterBirthdayBtn" type="button" hidden>Enter your birthday surprise ✨</button>
   <div class="gate-clue-wrap">
    <button class="gate-clue-btn" id="clueBtn" type="button">Curious? Reveal a tiny clue ✨</button>
@@ -406,10 +409,23 @@ const audio=document.getElementById("bgMusic"),musicBtn=document.getElementById(
 audio.src=CONFIG.musicFile;
 // Attempt unmuted autoplay as soon as the website is opened, including on the countdown landing page.
 let musicPlaying=false;
-async function tryStartMusic(){
- try{await audio.play();musicPlaying=true;if(musicBtn)musicBtn.textContent="♫ Music on";return true;}
- catch(e){if(musicBtn)musicBtn.textContent="♫ Tap for music";return false;}
+const landingMusicBtn=document.getElementById("landingMusicBtn");
+const landingMusicNote=document.getElementById("landingMusicNote");
+function updateMusicControls(){
+ const label=musicPlaying?"♫ Music on · Tap to pause":"♫ Play birthday music";
+ if(musicBtn)musicBtn.textContent=musicPlaying?"♫ Music on":"♫ Play music";
+ if(landingMusicBtn){landingMusicBtn.textContent=label;landingMusicBtn.setAttribute("aria-pressed",String(musicPlaying));}
+ if(landingMusicNote)landingMusicNote.textContent=musicPlaying?"Now playing. Enjoy the music! 💜":"Tap the button to start the birthday instrumental. 🎵";
 }
+async function tryStartMusic(){
+ try{await audio.play();musicPlaying=true;updateMusicControls();return true;}
+ catch(e){musicPlaying=false;updateMusicControls();if(landingMusicNote)landingMusicNote.textContent="If nothing plays, check that happy-birthday-instrumental.mp3 is uploaded beside index.html.";return false;}
+}
+async function toggleMusic(){
+ if(musicPlaying){audio.pause();musicPlaying=false;updateMusicControls();}
+ else{await tryStartMusic();}
+}
+if(landingMusicBtn)landingMusicBtn.addEventListener("click",toggleMusic);
 // Landing page and birthday page gate.
 const gate=document.getElementById("countdownGate");
 const birthdaySite=document.getElementById("birthdaySite");
@@ -512,10 +528,7 @@ document.addEventListener("pointerdown",startMusicOnInteraction,{passive:true});
 document.addEventListener("keydown",startMusicOnInteraction);
 // Immediate attempt: browsers may block audible autoplay until the visitor interacts.
 tryStartMusic();
-musicBtn.addEventListener("click",async()=>{
- if(musicPlaying){audio.pause();musicPlaying=false;musicBtn.textContent="♫ Play music";}
- else {await tryStartMusic();if(!musicPlaying){alert("Make sure the file happy-birthday-instrumental.mp3 is in the same folder as index.html. Some browsers also require a tap before music can start.");}}
-});
+if(musicBtn)musicBtn.addEventListener("click",toggleMusic);
 
 
 
